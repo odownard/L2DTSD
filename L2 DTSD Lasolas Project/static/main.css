@@ -1,35 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Fruktur:ital@0;1&display=swap');
 
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    background-color: rgb(175, 156, 139);
+    height: 200px;
+    width: 100%;
+}
+
 #title {
     font-family: Fruktur;
-    color: rgb(155, 61, 61);
-    font-size: 100px;
+    background: -webkit-linear-gradient(#990000, #119200);
+    background-clip: text;
+    color: transparent;
+    font-size: 100px; 
+    /* Just remember that for different page sizes, the title will stay the same currently so could be better to change to percentage. */
+    margin: 35px;
 }
 
 a {
     text-decoration: none;
 }
 
-#yeah {
-    color: green;
-    font-family: Fruktur;
+#searchbar {
+    margin: 50px;
+    margin-left: 10%; /* This helps with the placement of the serachbar. */
+    width: 70%;
+    text-align: center;
+    justify-content: center;
 }
 
-header {
-    display: flex;
-    background-color: rgb(100, 100, 100);
-    height: 100px;
+#searchbar p {
+    background-color: rgb(155, 61, 61);;
+    padding: 10px;
+    padding-right: 115%;
+    padding-left: 95%;
+    border-radius: 30px;
 }
 
 nav {
-    display: inline;
-    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     text-align: right;
-    margin-left: 48%;
     height: 100px;
-    width: 50%;
+    width: 30%;
+    margin: 50px;
+    padding-left: 35%;
 }
 
-body {
-    margin: 0;
+nav menu {
+    margin: 25px;
+    padding: 0;
+}
+
+nav cart {
+    margin: 25px;
 }

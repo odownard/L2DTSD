@@ -10,18 +10,16 @@
 <body>
     <header>
         <a href="/"><h1 id="title">LASOLAS</h1></a>
-        <h1>Chur Cuntz</h1>
-        <nav_bar>
-            <!-- <search></search> -->
-            <!-- <menu></menu> -->
-            <!-- <cart></cart> -->
-            <!-- <img src="static/Untitled design.png" alt="Mexican flag" height="50px"> -->
-        </nav_bar>
+        <div id="searchbar"><img src="" alt=""><p>Search</p></div>
+        <nav>
+            <menu><p>Menu</p></menu>
+            <cart><img src="static/Flag.png" alt="Cart" height="50px"></cart>
+        </nav>
     </header>
 
-    <!-- {% for row in results %} -->
-        <!-- <img src="{{ row['img_url'] }}" alt="Image"> -->
-    <!-- {% endfor %} -->
+    {% for row in results %}
+        <img src="{{ row['img_url'] }}" alt="Image">
+    {% endfor %}
 
     {% block body %}
     {% endblock %}
