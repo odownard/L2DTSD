@@ -1,27 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">-->
-    <title>Learning</title>
-</head>
-<body>
-    <header>
-        <a href="/"><h1 id="title">LASOLAS</h1></a>
-        <div id="searchbar"><img src="" alt=""><p>Search</p></div>
-        <nav>
-            <menu><p>Menu</p></menu>
-            <cart><img src="static/Flag.png" alt="Cart" height="50px"></cart>
-        </nav>
-    </header>
+{% extends "layout.html" %}
 
-    {% for row in results %}
-        <img src="{{ row['img_url'] }}" alt="Image">
-    {% endfor %}
+{% block title %}
+    Home
+{% endblock %}
 
-    {% block body %}
-    {% endblock %}
-</body>
-</html>
+{% block heroimage %}
+    static/empanada.jpg
+{% endblock %}
+
+{% block heroalt %}
+    Image of Empanada
+{% endblock %}
+
+{% block herotext %}
+    Empanadas De Carne
+{% endblock %}
+
+{% block body %}
+
+<div id="categories">
+    <h1 id="cattitle">Categories</h1>
+    <div id="three-column">
+        <a href="/drinks"><div class="homepage-category">
+            <img src="../static/jarritos_drinks.webp" alt="Image of drinks">
+            <h1>Drinks/Bebidas</h1>
+        </div></a>
+        <a href="/meals"><div class="homepage-category">
+            <img src="static/meal.webp" alt="Image of meals">
+            <h1>Meals/Comidas</h1>
+        </div></a>
+        <a href="/snacks"><div class="homepage-category">
+            <img src="static/churro.jpeg" alt="Image of drinks">
+            <h1>Snacks/Entradas</h1>
+        </div></a>
+    </div>
+</div>
+
+{% endblock %}

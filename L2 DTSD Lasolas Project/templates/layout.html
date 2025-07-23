@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">-->
+    <link rel="icon" href="{{ url_for('static', filename='Flag.png') }}" type="image/x-icon">
+    <title>
+        {% block title %}
+        Layout
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <a href="/"><h1 id="title">LASOLAS</h1></a>
+        <nav>
+            <div id="searchbar"><img src="" alt=""><p>Search</p></div>
+            <div class="dropdown">
+                <button class="dropbtn">Menu</button>
+                <div class="dropdown-content">
+                    <a href="/drinks">Drinks/Bebidas</a>
+                    <a href="/meals">Meals/Comidas</a>
+                    <a href="/snacks">Snacks/Entradas</a>
+                </div>
+            </div>
+            <cart><img src="static/Flag.png" alt="Cart" height="50px"></cart>
+        </nav>
+    </header>
+
+    <div id="hero-image">
+        <img src="{% block heroimage %}{% endblock %}" alt="{% block heroalt %}{% endblock %}">
+        <h1 id="texthero">{% block herotext %}{% endblock %}</h1>
+        <button id="orderhero">Order Now</button>
+    </div>
+
+    <!-- {% for row in results %} -->
+        <!-- <img src="{{ row['img_url'] }}" alt="Image"> -->
+    <!-- {% endfor %} -->
+
+    {% block body %}
+    {% endblock %}
+
+    <footer>
+        <p>© 2025 Lasolas. All rights reserved.</p>
+        <p>Contact us at: <a href="mailto:lasolas@gmail.com">lasolas@gmail.com</a></p>
+        <p>Follow us on social media: 
+            <!-- _blank allows the browser to open up the link in another tab -->
+            <a href="https://www.facebook.com/lasolas" target="_blank">Facebook</a> | 
+            <a href="https://www.instagram.com/lasolas" target="_blank">Instagram</a> | 
+            <a href="https://www.twitter.com/lasolas" target="_blank">Twitter</a>
+        </p>
+    </footer>
+</body>
+</html>

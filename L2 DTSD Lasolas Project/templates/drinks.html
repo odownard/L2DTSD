@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Drinks
+{% endblock %}
+
+{% block heroimage %}
+    static/empanada.jpg
+{% endblock %}
+
+{% block heroalt %}
+    Image of Empanada
+{% endblock %}
+
+{% block herotext %}
+    Drunks
+{% endblock %}
+
+{% block body %}
+
+
+<!-- Might be able to put this whole section in a block in the layout page to avoid having to repeat it on next page. Would have to change the directory and database its coming from though. -->
+<h1 class="food_title">Drinks</h1>
+<div class="food_options">
+    <section class="food-three-column">
+        {% for row in results %}
+            <div class="section">
+                <!-- <a href="/drinks"><div class="homepage-category"> - may be able to use this as a way to add the item to cart in future -->
+                <div class="item">
+                    <img src="{{ row['img_url'] }}" alt="Image of {{ row['item'] }}">
+                    <div class="item-details">
+                        <h1>{{ row['item'] }}</h1>
+                        <p class="price_menu">${{ row['price'] }}</p>
+                    </div>
+                <form action="/add_to_cart/{{ row['drinkID'] }}" method="POST">
+                    <input type="hidden" name="drinkID" value="{{ row['drinkID'] }}">
+                    <input type="hidden" name="item" value="{{ row['item'] }}">
+                    <input name="price" value="{{ row['price'] }}">
+                    <button type="submit" class="orderbtn">Add To Cart</button>
+                </form>
+                </div>
+                <!-- </div></a> -->
+            </div>
+        {% endfor %}
+        </section>
+</div>
+
+{% endblock %}

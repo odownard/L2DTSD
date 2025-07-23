@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Snacks
+{% endblock %}
+
+{% block heroimage %}
+    static/empanada.jpg
+{% endblock %}
+
+{% block heroalt %}
+    Image of Empanada
+{% endblock %}
+
+{% block herotext %}
+    Snucks
+{% endblock %}
+
+{% block body %}
+
+<h1 class="food_title">Snacks</h1>
+<div class="food_options">
+    <div class="food-three-column">
+        {% for row in results %}
+            <!-- <a href="/drinks"><div class="homepage-category"> - may be able to use this as a way to add the item to cart in future -->
+            <div class="item">
+                <img src="{{ row['img_url'] }}" alt="Image of {{ row['item'] }}">
+                <div class="item-details">
+                    <h1>{{ row['item'] }}</h1>
+                    <p class="price_menu">${{ row['price'] }}</p>
+                </div>
+                <button class="orderbtn">Add To Cart</button>
+            </div>
+            <!-- </div></a> -->
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
