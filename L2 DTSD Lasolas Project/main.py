@@ -65,11 +65,11 @@ def add_to_cart(item_type, itemID):
         "item": item,
         "price": price
     })
-    if item_type == "drinks":
+    if item_type == "drink":
         return redirect("/drinks")
-    elif item_type == "meals":
+    elif item_type == "meal":
         return redirect("/meals")
-    elif item_type == "snacks":
+    elif item_type == "snack":
         return redirect("/snacks")
     else:
         return redirect("/")

@@ -22,16 +22,19 @@
 <div class="food_options">
     <div class="food-three-column">
         {% for row in results %}
-            <!-- <a href="/drinks"><div class="homepage-category"> - may be able to use this as a way to add the item to cart in future -->
             <div class="item">
                 <img src="{{ row['img_url'] }}" alt="Image of {{ row['item'] }}">
                 <div class="item-details">
                     <h1>{{ row['item'] }}</h1>
                     <p class="price_menu">${{ row['price'] }}</p>
                 </div>
-                <button class="orderbtn">Add To Cart</button>
+            <form action="/add_to_cart/snack/{{ row['snackID'] }}" method="POST">
+                <input type="hidden" name="snackID" value="{{ row['snackID'] }}">
+                <input type="hidden" name="item" value="{{ row['item'] }}">
+                <input type="hidden" name="price" value="{{ row['price'] }}">
+                <button type="submit" class="orderbtn">Add To Cart</button>
+            </form>
             </div>
-            <!-- </div></a> -->
         {% endfor %}
     </div>
 </div>
