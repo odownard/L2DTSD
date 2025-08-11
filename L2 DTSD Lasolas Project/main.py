@@ -35,8 +35,14 @@ def query_db(query, args=(), one=False):
 cart = []
 @app.route("/cart")
 def view_cart():
-    # Display the items in the cart
-    return render_template("cart.html", cart=cart)
+    total_price = sum(int(item['price']) for item in cart)
+    item_count = len(cart)
+    # for item in cart:
+    #     if item in cart:
+    #         quantity = quantity + 1
+    #     else:
+    #         quantity = 1
+    return render_template("cart.html", cart=cart, item_count=item_count, total_price=total_price)
 
 # Routes for different pages
 @app.route("/")
@@ -44,14 +50,30 @@ def home():
     #home page
     sql = "SELECT * FROM drinks"
     results = query_db(sql)
-    return render_template("index.html", results=results)
+    item_count = len(cart)
+    return render_template("index.html", results=results, item_count=item_count)
 
 @app.route("/drinks")
 def drinks():
     # drinks page
     sql = "SELECT * FROM drinks"
     results = query_db(sql)
-    return render_template("drinks.html", results=results)
+    item_count = len(cart)
+    return render_template("drinks.html", results=results, item_count=item_count)
+
+@app.route("/meals")
+def meals():
+    sql = "SELECT * FROM meals"
+    results = query_db(sql)
+    item_count = len(cart)
+    return render_template("meals.html", results=results, item_count=item_count)
+
+@app.route("/snacks")
+def snacks():
+    sql = "SELECT * FROM snacks"
+    results = query_db(sql)
+    item_count = len(cart)
+    return render_template("snacks.html", results=results, item_count=item_count)
 
 # Below is the code that adds items (drinks or meals) to the cart
 @app.route("/add_to_cart/<string:item_type>/<int:itemID>", methods=["POST"])
@@ -73,18 +95,12 @@ def add_to_cart(item_type, itemID):
         return redirect("/snacks")
     else:
         return redirect("/")
-
-@app.route("/meals")
-def meals():
-    sql = "SELECT * FROM meals"
-    results = query_db(sql)
-    return render_template("meals.html", results=results)
-
-@app.route("/snacks")
-def snacks():
-    sql = "SELECT * FROM snacks"
-    results = query_db(sql)
-    return render_template("snacks.html", results=results)
     
+@app.route("/remove_cart", methods=["POST"])
+def remove_cart():
+    global cart # Makes the cart list a global variable instead of a local one meaning that it can connect throughout the whole website.
+    cart = []
+    return render_template("cart.html", cart=cart)
+
 if __name__ == "__main__":
     app.run(debug=True)
